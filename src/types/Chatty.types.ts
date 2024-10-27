@@ -26,7 +26,7 @@ export interface IMessage {
 
 export interface IChatty {
   messages: IMessage[];
-  headerProps: IChatHeaderProps;
+  headerProps?: IChatHeaderProps;
   footerProps: IFooterProps;
   replyingTo?: IMessage;
   bubbleProps?: Omit<IChatBubble, 'customContent'>;

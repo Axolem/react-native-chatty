@@ -290,7 +290,7 @@ in the current messages. If it is, then it will not scroll to the bottom. */
     }, []);
 
     return (
-      <View style={{ minWidth: 1, minHeight: 1, maxHeight: listHeight }}>
+      <View style={{ minWidth: 1, minHeight: 1, height: listHeight }}>
         {propsContext.showScrollToBottomButton && (
           <FAB
             ref={fabRef}
@@ -306,12 +306,14 @@ in the current messages. If it is, then it will not scroll to the bottom. */
           renderItem={rowRenderer}
           data={messages}
           getItemType={getItemType}
+          style={{ flex: 1 }}
+          contentContainerStyle={{ padding: 10 }}
+          // @ts-ignore
           style={[
             {
               height: propsContext.replyingTo ? '90%' : '100%',
             },
-            // !TODO: Fix this
-            // { ...props.containerStyle },
+            { ...props.containerStyle },
           ]}
           // @ts-ignore
           ref={flashListRef}

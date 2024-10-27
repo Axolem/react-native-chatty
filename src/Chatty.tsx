@@ -1,22 +1,18 @@
 import dayjs from 'dayjs';
 import type { ForwardedRef } from 'react';
-import React, { useCallback, useEffect, useRef } from 'react';
-import {
-  ActivityIndicator,
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  StyleSheet,
-  View,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { forwardRef, useCallback, useEffect, useRef } from 'react';
+import { ActivityIndicator, Keyboard, StyleSheet, View } from 'react-native';
 import { Footer } from './footer';
-import { Header } from './header';
+
 import { List } from './list';
 import type { IChatty, ListRef } from './types/chatty.types';
 import { PropsContext } from './components/props-context';
+import {
+  KeyboardAvoiderProvider,
+  KeyboardAvoiderScrollView,
+} from '@good-react-native/keyboard-avoider';
 
-export const Chatty = React.forwardRef(
+export const Chatty = forwardRef(
   (props: IChatty, ref: ForwardedRef<ListRef>) => {
     const listRef = useRef<ListRef>();
     const { messages } = props;
@@ -54,22 +50,11 @@ export const Chatty = React.forwardRef(
     }, []);
 
     return (
-      <SafeAreaView>
+      <KeyboardAvoiderProvider>
         <PropsContext.Provider value={props}>
-          {props?.renderHeader ? (
-            props.renderHeader(props.headerProps)
-          ) : (
-            <Header {...props.headerProps} />
-          )}
-          <KeyboardAvoidingView
-            behavior={Platform.select({
-              android: 'position',
-              ios: 'position',
-            })}
-            keyboardVerticalOffset={Platform.select({
-              android: 20,
-            })}
-          >
+          {props?.renderHeader?.(props.headerProps)}
+
+          <KeyboardAvoiderScrollView>
             {props.messages.length < 1 ? (
               renderLoading()
             ) : (
@@ -93,9 +78,9 @@ export const Chatty = React.forwardRef(
                 )}
               </>
             )}
-          </KeyboardAvoidingView>
+          </KeyboardAvoiderScrollView>
         </PropsContext.Provider>
-      </SafeAreaView>
+      </KeyboardAvoiderProvider>
     );
   }
 );
