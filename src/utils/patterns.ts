@@ -2,9 +2,7 @@ import type { IPatternShape } from 'src/types/chatty.types';
 
 export function loadParsedText() {
   try {
-    const ReactNativeParsedText = require('react-native-parsed-text').default;
-
-    return ReactNativeParsedText;
+    return require('react-native-parsed-text').default;
   } catch (err) {
     console.warn(
       "Couldn't load react-native-parsed-text, please install it if you want to use the pattern feature"

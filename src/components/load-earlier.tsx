@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useCallback } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { Text, TouchableOpacity } from 'react-native';
@@ -37,4 +37,4 @@ function _LoadEarlier(props: ILoadEarlierProps) {
   );
 }
 
-export const LoadEarlier = React.memo(_LoadEarlier);
+export const LoadEarlier = memo(_LoadEarlier);

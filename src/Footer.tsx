@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { memo, useCallback, useContext, useMemo, useState } from 'react';
 import {
   Button,
   ImageBackground,
@@ -337,4 +337,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Footer = React.memo(_Footer);
+export const Footer = memo(_Footer);

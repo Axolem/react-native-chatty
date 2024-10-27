@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -31,7 +31,7 @@ function _ReplyingTo(props: {
   );
 }
 
-export const ReplyingTo = React.memo(_ReplyingTo);
+export const ReplyingTo = memo(_ReplyingTo);
 
 const styles = StyleSheet.create({
   reply: {

@@ -1,6 +1,7 @@
 {
   "name": "react-native-chatty",
   "version": "0.4.3",
+  "type": "module",
   "description": "React native chatty",
   "main": "src/index.tsx",
   "module": "src/index.tsx",

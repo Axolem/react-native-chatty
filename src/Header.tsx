@@ -1,7 +1,7 @@
-import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { IChatHeaderProps } from './types/chatty.types';
+import { memo } from 'react';
 
 function _Header(props: IChatHeaderProps) {
   const { user } = props;
@@ -37,4 +37,4 @@ export const styles = StyleSheet.create({
   },
 });
 
-export const Header = React.memo(_Header);
+export const Header = memo(_Header);

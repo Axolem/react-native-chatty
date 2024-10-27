@@ -1,5 +1,5 @@
 import type { ViewSource } from '@trial-trl/react-native-image-viewing/dist/ImageViewing';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { videoRef } from '../utils/video-renderer';
 import { PhotoView as _PhotoView } from '../utils/photo-view';
 

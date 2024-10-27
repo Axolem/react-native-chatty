@@ -1,4 +1,3 @@
-import React from 'react';
 import type { IMedia } from '../types/chatty.types';
 import { RenderVideoExpo, videoRef } from '../utils/video-renderer';
 import { ResizeMode } from 'expo-av';

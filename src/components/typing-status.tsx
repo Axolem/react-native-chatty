@@ -1,4 +1,11 @@
-import React, { Ref, useContext, useImperativeHandle, useState } from 'react';
+import {
+  forwardRef,
+  memo,
+  Ref,
+  useContext,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { Text } from 'react-native';
 import type { ITypingStatusRef } from 'src/types/chatty.types';
 import { ChatBubble } from '../chat-bubble';
@@ -53,4 +60,4 @@ function _TypingStatus(_: any, ref: Ref<ITypingStatusRef>) {
   }
 }
 
-export const TypingStatus = React.memo(React.forwardRef(_TypingStatus));
+export const TypingStatus = memo(forwardRef(_TypingStatus));

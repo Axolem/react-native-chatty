@@ -1,5 +1,5 @@
 import type { Ref } from 'react';
-import React, { useImperativeHandle, useState } from 'react';
+import { forwardRef, memo, useImperativeHandle, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import type { IScrollToBottomProps } from 'src/types/chatty.types';
 
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export const FAB = React.memo(React.forwardRef(_FAB));
+export const FAB = memo(forwardRef(_FAB));

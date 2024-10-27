@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import type { ForwardedRef, Ref } from 'react';
-import React, {
+import {
+  forwardRef,
   useCallback,
   useContext,
   useEffect,
@@ -45,7 +46,7 @@ import {
 import { ChatBubbleEmitter } from './utils/event-emitter';
 import { wait } from './utils/helpers';
 
-const ScrollViewWithHeader = React.forwardRef(
+const ScrollViewWithHeader = forwardRef(
   ({ children, ...props }: ScrollViewProps, ref: Ref<ScrollView>) => {
     const propsContext = useContext(PropsContext);
 
@@ -61,7 +62,7 @@ const ScrollViewWithHeader = React.forwardRef(
   }
 );
 
-export const List = React.forwardRef(
+export const List = forwardRef(
   (props: IListProps, ref: ForwardedRef<ListRef>) => {
     const propsContext = useContext(PropsContext);
     const flashListRef = useRef<FlashList<IMessage>>();
@@ -238,12 +239,10 @@ in the current messages. If it is, then it will not scroll to the bottom. */
             )}
             <Animated.View entering={FadeInDown} exiting={FadeOutUp}>
               {propsContext.onReply ? (
-                <>
-                  <SwipeableBubble
-                    message={data}
-                    onReply={propsContext.onReply}
-                  />
-                </>
+                <SwipeableBubble
+                  message={data}
+                  onReply={propsContext.onReply}
+                />
               ) : (
                 <ChatBubble message={data} />
               )}
