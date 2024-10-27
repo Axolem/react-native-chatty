@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import type { HapticType } from '../types/chatty.types';
-import { triggerHaptic } from '../utils/hapticEngine';
+import { triggerHaptic } from '../utils/haptic-engine';
 
 /**
  * `useHaptic` returns a `trigger` function that triggers haptic feedback

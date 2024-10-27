@@ -11,7 +11,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Animated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
 import { PropsContext } from './components/props-context';
 import { IFooterProps, IMedia, MediaType } from './types/chatty.types';
-import { selectImage } from './utils/imagePicker';
+import { selectImage } from './utils/image-picker';
 
 function _Footer(props: IFooterProps) {
   const propsContext = useContext(PropsContext);

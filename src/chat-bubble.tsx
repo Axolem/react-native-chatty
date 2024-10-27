@@ -19,10 +19,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import { PropsContext } from './components/props-context';
-import { PhotoView } from './components/PhotoView';
-import { ReplyingTo } from './components/ReplyingTo';
-import { UrlPreviewBubble } from './components/UrlPreviewBubble';
-import { VideoThumbnail } from './components/VideoThumbnail';
+import { PhotoView } from './components/photo-view';
+import { ReplyingTo } from './components/replying-to';
+import { UrlPreviewBubble } from './components/url-preview-bubble';
+import { VideoThumbnail } from './components/video-thumbnail';
 import {
   IChatBubble,
   IMessage,
@@ -30,7 +30,7 @@ import {
   MediaType,
   MessageStatus,
 } from './types/chatty.types';
-import { ChatEmitter } from './utils/eventEmitter';
+import { ChatEmitter } from './utils/event-emitter';
 import { extractUrlFromString, fetchMetaData } from './utils/helpers';
 import {
   ALL_PATERNS_SHAPES,

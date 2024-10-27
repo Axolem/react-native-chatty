@@ -28,12 +28,12 @@ import {
 import { ChatBubble } from './chat-bubble';
 import { PropsContext } from './components/props-context';
 import { SwipeableBubble } from './swipeable-bubble';
-import { FAB, IFabRef } from './components/FAB';
-import { LoadEarlier } from './components/LoadEarlier';
-import { RenderDate } from './components/RenderDate';
-import { TypingStatus } from './components/TypingStatus';
-import { useHaptic } from './hooks/useHaptic';
-import { usePrevious } from './hooks/usePrevious';
+import { FAB, IFabRef } from './components/fab';
+import { LoadEarlier } from './components/load-earlier';
+import { RenderDate } from './components/render-date';
+import { TypingStatus } from './components/typing-status';
+import { useHaptic } from './hooks/use-haptic';
+import { usePrevious } from './hooks/use-previous';
 import {
   HapticType,
   IListProps,
@@ -42,7 +42,7 @@ import {
   LayoutType,
   ListRef,
 } from './types/chatty.types';
-import { ChatBubbleEmitter } from './utils/eventEmitter';
+import { ChatBubbleEmitter } from './utils/event-emitter';
 import { wait } from './utils/helpers';
 
 const ScrollViewWithHeader = React.forwardRef(

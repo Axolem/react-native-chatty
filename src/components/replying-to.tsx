@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { ChatBubbleEmitter } from '../utils/eventEmitter';
+import { ChatBubbleEmitter } from '../utils/event-emitter';
 
 function _ReplyingTo(props: {
   username: string;
