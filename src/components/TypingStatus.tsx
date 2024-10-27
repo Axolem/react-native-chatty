@@ -2,7 +2,7 @@ import React, { Ref, useContext, useImperativeHandle, useState } from 'react';
 import { Text } from 'react-native';
 import type { ITypingStatusRef } from 'src/types/chatty.types';
 import { ChatBubble } from '../chat-bubble';
-import { PropsContext } from '../chatty';
+import { PropsContext } from './props-context';
 import { loadLottie } from '../utils/lottie';
 
 function _TypingStatus(_: any, ref: Ref<ITypingStatusRef>) {

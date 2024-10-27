@@ -26,7 +26,7 @@ import {
   ListRenderItemInfo,
 } from '@shopify/flash-list';
 import { ChatBubble } from './chat-bubble';
-import { PropsContext } from './chatty';
+import { PropsContext } from './components/props-context';
 import { SwipeableBubble } from './swipeable-bubble';
 import { FAB, IFabRef } from './components/FAB';
 import { LoadEarlier } from './components/LoadEarlier';

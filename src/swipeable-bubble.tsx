@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useRef } from 'react';
 import { Text } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import { ChatBubble } from './chat-bubble';
-import { PropsContext } from './chatty';
+import { PropsContext } from './components/props-context';
 import type { ISwipeableBubble } from './types/chatty.types';
 
 function _SwipeableBubble(props: ISwipeableBubble) {

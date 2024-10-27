@@ -18,7 +18,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { PropsContext } from './chatty';
+import { PropsContext } from './components/props-context';
 import { PhotoView } from './components/PhotoView';
 import { ReplyingTo } from './components/ReplyingTo';
 import { UrlPreviewBubble } from './components/UrlPreviewBubble';
@@ -40,7 +40,7 @@ import {
   MENTION_PATTERN_SHAPE,
   URL_PATTERN_SHAPE,
 } from './utils/patterns';
-import { ContextMenuWrapper } from './wrappers/ContextMenuWrapper';
+import { ContextMenuWrapper } from './wrappers/context-menu-wrapper';
 
 const ParsedText = loadParsedText();
 

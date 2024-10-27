@@ -1,7 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { Platform, Text, View } from 'react-native';
-import { PropsContext } from '../chatty';
+import { PropsContext } from '../components/props-context';
 import type { IMessage } from '../types/chatty.types';
 import { contextMenuView } from '../utils/contextMenu';
 import { ChatEmitter } from '../utils/eventEmitter';
