@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import dayjs from 'dayjs';
-import type { IRenderDateProps } from 'src/types/Chatty.types';
+import type { IRenderDateProps } from 'src/types/chatty.types';
 
 function _RenderDate(props: IRenderDateProps) {
   const { date, containerStyle, labelStyle } = props;

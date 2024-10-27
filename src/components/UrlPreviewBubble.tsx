@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import type { IUrlPreviewBubble } from 'src/types/Chatty.types';
+import type { IUrlPreviewBubble } from 'src/types/chatty.types';
 
 export const UrlPreviewBubble = (props: IUrlPreviewBubble) => {
   const { url, title, description, image } = props;

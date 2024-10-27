@@ -10,12 +10,11 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Footer } from './Footer';
-import { Header } from './Header';
-import { List } from './List';
-import type { IChatty, ListRef } from './types/Chatty.types';
-
-export const PropsContext = React.createContext<IChatty>({} as IChatty);
+import { Footer } from './footer';
+import { Header } from './header';
+import { List } from './list';
+import type { IChatty, ListRef } from './types/chatty.types';
+import { PropsContext } from './components/props-context';
 
 export const Chatty = React.forwardRef(
   (props: IChatty, ref: ForwardedRef<ListRef>) => {

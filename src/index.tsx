@@ -1,3 +1,3 @@
-export { Chatty } from './Chatty';
+export { Chatty } from './chatty';
 export { ChatEmitter } from './utils/eventEmitter';
-export { MessageStatus } from './types/Chatty.types';
+export { MessageStatus } from './types/chatty.types';

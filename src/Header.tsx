@@ -1,11 +1,13 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { IChatHeaderProps } from './types/Chatty.types';
+import type { IChatHeaderProps } from './types/chatty.types';
 
 function _Header(props: IChatHeaderProps) {
   const { user } = props;
   const { top } = useSafeAreaInsets();
+
+  return null;
 
   return (
     <View style={[styles.container, { paddingTop: top }]}>

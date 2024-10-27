@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Animated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
-import { PropsContext } from './Chatty';
-import { IFooterProps, IMedia, MediaType } from './types/Chatty.types';
+import { PropsContext } from './components/props-context';
+import { IFooterProps, IMedia, MediaType } from './types/chatty.types';
 import { selectImage } from './utils/imagePicker';
 
 function _Footer(props: IFooterProps) {
@@ -88,9 +88,9 @@ function _Footer(props: IFooterProps) {
           <Animated.View
             entering={FadeInDown}
             exiting={FadeOutDown}
-            style={
-              props.mentionStyles?.containerStyle ?? styles.mentionContainer
-            }
+            // style={
+            //   props.mentionStyles?.containerStyle ?? styles.mentionContainer
+            // }
           >
             {foundedMentions.map((mention) => (
               <TouchableOpacity onPress={() => onPressMention(mention)}>
@@ -122,15 +122,16 @@ function _Footer(props: IFooterProps) {
 
   const onPressImage = useCallback(async () => {
     selectImage().then((r) => {
-      if (r.cancelled) {
+      if (r.canceled) {
         return;
       }
 
       const assets = {
         type: MediaType.Image,
-        uri: r.uri,
-        base64: r.base64,
+        uri: r.assets[0].uri,
+        base64: r.assets[0].base64 ?? undefined,
       };
+
       if (image) {
         setImage([...image, assets]);
       } else {

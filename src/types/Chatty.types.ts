@@ -5,7 +5,7 @@ import type {
   ViewStyle,
 } from 'react-native';
 import type { ContextMenuAction } from 'react-native-context-menu-view';
-import type { RecyclerListViewProps } from 'recyclerlistview';
+import type { FlashListProps } from '@shopify/flash-list';
 
 export interface IUser {
   id: number;
@@ -50,7 +50,7 @@ export interface IChatty {
 
 export interface IListProps
   extends Pick<
-    RecyclerListViewProps,
+    FlashListProps<IMessage>,
     'onEndReached' | 'onEndReachedThreshold' | 'onScroll'
   > {
   rowRenderer?: (data: IMessage) => JSX.Element;

@@ -1,7 +1,7 @@
 import type { Ref } from 'react';
 import React, { useImperativeHandle, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import type { IScrollToBottomProps } from 'src/types/Chatty.types';
+import type { IScrollToBottomProps } from 'src/types/chatty.types';
 
 export interface IFabRef {
   show: () => void;

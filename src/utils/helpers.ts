@@ -1,4 +1,4 @@
-import type { IUrlPreviewBubble } from 'src/types/Chatty.types';
+import type { IUrlPreviewBubble } from 'src/types/chatty.types';
 
 /**
  * `wait` is a function that returns a promise that resolves after a given number of milliseconds

@@ -1,6 +1,7 @@
 import React from 'react';
-import type { IMedia } from '../types/Chatty.types';
+import type { IMedia } from '../types/chatty.types';
 import { RenderVideoExpo, videoRef } from '../utils/videoRenderer';
+import { ResizeMode } from 'expo-av';
 
 interface IProps {
   media: IMedia;
@@ -15,7 +16,7 @@ export const Video = ({ media }: IProps) => {
         height: 300,
       }}
       pictureInPicture={media?.videoOptions?.pictureInPicture}
-      resizeMode="contain"
+      resizeMode={ResizeMode.CONTAIN}
       useNativeControls
       shouldPlay
       ref={videoRef}

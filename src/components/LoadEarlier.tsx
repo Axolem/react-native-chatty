@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCallback } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { Text, TouchableOpacity } from 'react-native';
-import type { ILoadEarlierProps } from 'src/types/Chatty.types';
+import type { ILoadEarlierProps } from 'src/types/chatty.types';
 
 function _LoadEarlier(props: ILoadEarlierProps) {
   const { onLoadEarlier } = props;

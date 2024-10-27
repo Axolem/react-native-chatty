@@ -1,8 +1,8 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
-import { ActionSheetIOS, Platform, Text, View } from 'react-native';
-import { PropsContext } from '../Chatty';
-import type { IMessage } from '../types/Chatty.types';
+import { Platform, Text, View } from 'react-native';
+import { PropsContext } from '../chatty';
+import type { IMessage } from '../types/chatty.types';
 import { contextMenuView } from '../utils/contextMenu';
 import { ChatEmitter } from '../utils/eventEmitter';
 
@@ -17,36 +17,11 @@ function ContextMenuWrapper(props: IProps) {
   const propsContext = useContext(PropsContext);
 
   const onPress = useCallback(
-    (index) => {
+    (index: number) => {
       ChatEmitter.emit('actionPressed', index, props.message);
     },
     [props.message]
   );
-
-  const onLongPress = useCallback(() => {
-    if (Platform.OS === 'ios') {
-      ActionSheetIOS.showActionSheetWithOptions(
-        {
-          options: [
-            ...(propsContext.bubbleProps?.actions?.options.map(
-              (_) => _.title
-            ) as string[]),
-            propsContext.bubbleProps?.actions?.cancelButtonLabel ?? 'Close',
-          ],
-          cancelButtonIndex: propsContext.bubbleProps?.actions?.options.length,
-          destructiveButtonIndex:
-            propsContext.bubbleProps?.actions?.options.findIndex(
-              (_) => _.destructive
-            ) || -1,
-        },
-        onPress
-      );
-    }
-  }, [
-    onPress,
-    propsContext.bubbleProps?.actions?.cancelButtonLabel,
-    propsContext.bubbleProps?.actions?.options,
-  ]);
 
   const onChange = useCallback(() => {}, []);
 

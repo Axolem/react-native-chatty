@@ -1,4 +1,4 @@
-import type { IPatternShape } from 'src/types/Chatty.types';
+import type { IPatternShape } from 'src/types/chatty.types';
 
 export function loadParsedText() {
   try {

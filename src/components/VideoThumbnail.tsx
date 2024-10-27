@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import type { IMedia } from '../types/Chatty.types';
+import type { IMedia } from '../types/chatty.types';
 import { Video } from './Video';
 
 interface IProps {

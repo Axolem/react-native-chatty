@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { Platform } from 'react-native';
-import { HapticType } from '../types/Chatty.types';
+import { HapticType } from '../types/chatty.types';
 
 /* This is a function that returns a promise. It is used to trigger haptic feedback. */
 async function triggerHaptic(type: HapticType) {
