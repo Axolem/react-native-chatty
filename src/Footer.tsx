@@ -211,20 +211,46 @@ function _Footer(props: IFooterProps) {
           </ScrollView>
         )}
 
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TextInput
-            value={props.value ?? message}
-            onChangeText={onChangeText}
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <View
             style={[
-              propsContext?.enableImageUploads
-                ? styles.shortedTextInput
-                : styles.textInput,
-
-              props?.inputStyle,
+              {
+                flex: 1,
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent:
+                  props?.extraInputRender && message.length === 0
+                    ? 'space-between'
+                    : 'flex-start',
+                width:
+                  props?.extraInputRender && message.length === 0
+                    ? '100%'
+                    : '80%',
+              },
+              props?.inputContainerStyle,
             ]}
-            placeholder={props?.placeholder ?? 'Type a message...'}
-            onKeyPress={(e) => onKeyPress(e.nativeEvent.key)}
-          />
+          >
+            <TextInput
+              value={props.value ?? message}
+              onChangeText={onChangeText}
+              style={[
+                propsContext?.enableImageUploads
+                  ? styles.shortedTextInput
+                  : styles.textInput,
+                props?.inputStyle,
+              ]}
+              placeholder={props?.placeholder ?? 'Type a message...'}
+              onKeyPress={(e) => onKeyPress(e.nativeEvent.key)}
+              multiline
+            />
+            {message.length === 0 && props?.extraInputRender}
+          </View>
 
           {propsContext?.enableImageUploads && (
             <>
@@ -261,8 +287,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textInput: {
-    padding: 10,
-    width: '80%',
     borderWidth: 1,
     borderColor: '#ccc',
   },

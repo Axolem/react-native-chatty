@@ -1,5 +1,6 @@
 import type {
   ImageSourcePropType,
+  TextInputProps,
   TextStyle,
   TouchableOpacityProps,
   ViewStyle,
@@ -101,7 +102,7 @@ export interface IFooterProps extends Pick<IChatty, 'replyingTo'> {
   closeReplyButton?: (props?: IFooterProps) => JSX.Element;
   sendButton?: (props?: Pick<IFooterProps, 'onPressSend'>) => JSX.Element;
   value?: string;
-  inputStyle?: ViewStyle;
+  inputStyle?: TextInputProps['style'];
   containerStyle?: ViewStyle;
   placeholder?: string;
   replyStyles?: {
@@ -114,6 +115,8 @@ export interface IFooterProps extends Pick<IChatty, 'replyingTo'> {
     labelStyle?: TextStyle;
   };
   renderImageAction?: (props: { onPressImage: () => void }) => JSX.Element;
+  extraInputRender?: JSX.Element;
+  inputContainerStyle?: ViewStyle;
 }
 
 export interface ListRef {
