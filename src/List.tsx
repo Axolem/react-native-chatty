@@ -52,10 +52,9 @@ const ScrollViewWithHeader = forwardRef(
 
     return (
       <ScrollView ref={ref} {...props}>
-        {propsContext?.loadEarlierProps &&
-          propsContext.loadEarlierProps.show && (
-            <LoadEarlier {...propsContext.loadEarlierProps} />
-          )}
+        {propsContext?.loadEarlierProps?.show && (
+          <LoadEarlier {...propsContext.loadEarlierProps} />
+        )}
         {children}
       </ScrollView>
     );
@@ -71,12 +70,18 @@ export const List = forwardRef(
     const { trigger } = useHaptic();
     const fabRef = useRef<IFabRef>(null);
     const typingStatusRef = useRef<ITypingStatusRef>(null);
+
+    const no =
+      typeof propsContext?.footerProps.replyStyles?.containerStyle
+        ?.maxHeight === 'number' && propsContext?.inserts
+        ? propsContext.footerProps.replyStyles.containerStyle.maxHeight
+        : 0;
+
     const listHeight = useMemo(
-      () => windowDimensions.height - 150 - safeArea.bottom - safeArea.top,
-      [windowDimensions, safeArea]
+      () => windowDimensions.height - 140 - safeArea.bottom - safeArea.top - no,
+      [windowDimensions, safeArea, no]
     );
     const { rowRenderer: rowRendererProp, data } = props;
-
     const [messages, setMessages] = useState<IMessage[]>([]);
     const previousMessages = usePrevious<IMessage[]>(messages);
 
@@ -117,20 +122,19 @@ to the replied message. */
             } else {
               setMessages([message, ...messages]);
             }
+          } else if (Array.isArray(message)) {
+            setMessages([...messages, ...message]);
           } else {
-            if (Array.isArray(message)) {
-              setMessages([...messages, ...message]);
-            } else {
-              setMessages([...messages, message]);
-            }
+            setMessages([...messages, message]);
           }
 
-          if (!Array.isArray(message)) {
-            if (!message.me && propsContext?.enableHapticFeedback) {
-              if (Platform.OS !== 'web') {
-                trigger(HapticType.Heavy);
-              }
-            }
+          if (
+            !Array.isArray(message) &&
+            !message.me &&
+            propsContext?.enableHapticFeedback &&
+            Platform.OS !== 'web'
+          ) {
+            trigger(HapticType.Heavy);
           }
         },
         /* This is a function that is used to scroll to the bottom of the list. */
@@ -301,20 +305,11 @@ in the current messages. If it is, then it will not scroll to the bottom. */
 
         <AnimatedFlashList
           estimatedItemSize={230}
-          // !TODO: Fix this
-          // renderScrollComponent={ScrollViewWithHeader}
+          renderScrollComponent={ScrollViewWithHeader}
           renderItem={rowRenderer}
           data={messages}
           getItemType={getItemType}
-          style={{ flex: 1 }}
           contentContainerStyle={{ padding: 10 }}
-          // @ts-ignore
-          style={[
-            {
-              height: propsContext.replyingTo ? '90%' : '100%',
-            },
-            { ...props.containerStyle },
-          ]}
           // @ts-ignore
           ref={flashListRef}
           overrideProps={{

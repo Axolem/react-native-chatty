@@ -1,4 +1,4 @@
-import { memo, useCallback, useContext, useMemo, useState } from 'react';
+import { memo, useCallback, useContext, useState } from 'react';
 import {
   Button,
   ImageBackground,
@@ -19,14 +19,6 @@ function _Footer(props: IFooterProps) {
   const [mentions] = useState(['JohnDoe']);
   const [foundedMentions, setFoundedMentions] = useState<string[]>([]);
   const [image, setImage] = useState<IMedia[] | undefined>();
-
-  const cuttedText = useMemo(() => {
-    if (props.replyingTo) {
-      return props.replyingTo.text.slice(0, 100) + '...';
-    }
-
-    return null;
-  }, [props?.replyingTo]);
 
   const onChangeText = useCallback(
     (text: string) => {
@@ -142,14 +134,14 @@ function _Footer(props: IFooterProps) {
 
   return (
     <View
-      style={
+      style={[
         image &&
-        image.length > 0 && {
-          position: 'absolute',
-          bottom: -70,
-          backgroundColor: '#fff',
-        }
-      }
+          image.length > 0 && {
+            position: 'absolute',
+            bottom: -70,
+            backgroundColor: '#fff',
+          },
+      ]}
     >
       {props.replyingTo && (
         <Animated.View
@@ -163,7 +155,9 @@ function _Footer(props: IFooterProps) {
             >
               {props.replyingTo.user.username}
             </Text>
-            <Text style={props.replyStyles?.labelStyle}>{cuttedText}</Text>
+            <Text numberOfLines={1} style={[props.replyStyles?.labelStyle]}>
+              {props.replyingTo.text}
+            </Text>
           </View>
           {propsContext.footerProps.closeReplyButton ? (
             propsContext.footerProps.closeReplyButton(props)

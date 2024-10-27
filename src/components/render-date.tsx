@@ -7,9 +7,11 @@ function _RenderDate(props: IRenderDateProps) {
   const { date, containerStyle, labelStyle } = props;
 
   return (
-    <View style={containerStyle ?? styles.container}>
-      <Text style={labelStyle ?? styles.label}>
-        {dayjs(date).format('dddd D MMM')}
+    <View style={[styles.container, containerStyle]}>
+      <Text style={[styles.label, labelStyle]}>
+        {dayjs(date).isSame(new Date(), 'day')
+          ? 'Today'
+          : dayjs(date).format('dddd D MMM')}
       </Text>
     </View>
   );
@@ -17,13 +19,15 @@ function _RenderDate(props: IRenderDateProps) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    paddingHorizontal: 5,
+    paddingVertical: 0,
     backgroundColor: '#ccc',
     alignSelf: 'center',
-    borderRadius: 5,
+    borderRadius: 100,
   },
   label: {
     color: '#fff',
+    fontSize: 12,
   },
 });
 

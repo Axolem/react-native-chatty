@@ -1,7 +1,13 @@
 import dayjs from 'dayjs';
 import type { ForwardedRef } from 'react';
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
-import { ActivityIndicator, Keyboard, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Dimensions,
+  Keyboard,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { Footer } from './footer';
 
 import { List } from './list';
@@ -54,7 +60,10 @@ export const Chatty = forwardRef(
         <PropsContext.Provider value={props}>
           {props?.renderHeader?.(props.headerProps)}
 
-          <KeyboardAvoiderScrollView>
+          <KeyboardAvoiderScrollView
+            style={[{ flexGrow: 1 }]}
+            keyboardShouldPersistTaps="handled"
+          >
             {props.messages.length < 1 ? (
               renderLoading()
             ) : (

@@ -428,10 +428,14 @@ function _ChatBubble(props: IChatBubble) {
 
                   <ParsedText
                     parse={messagePatterns}
-                    style={
-                      propsContext?.bubbleProps?.labelStyle &&
-                      propsContext.bubbleProps?.labelStyle(message?.me ?? false)
-                    }
+                    style={[
+                      propsContext?.bubbleProps?.labelStyle?.(
+                        message?.me ?? false
+                      ),
+                      {
+                        maxWidth: '90%',
+                      },
+                    ]}
                   >
                     {message?.text}
                   </ParsedText>
@@ -443,10 +447,14 @@ function _ChatBubble(props: IChatBubble) {
                   {renderMedia()}
 
                   <Text
-                    style={
-                      propsContext?.bubbleProps?.labelStyle &&
-                      propsContext.bubbleProps?.labelStyle(message?.me ?? false)
-                    }
+                    style={[
+                      propsContext?.bubbleProps?.labelStyle?.(
+                        message?.me ?? false
+                      ),
+                      {
+                        maxWidth: '90%',
+                      },
+                    ]}
                   >
                     {message?.text}
                   </Text>
@@ -488,6 +496,8 @@ export const styles = StyleSheet.create({
     margin: 20,
     maxWidth: Dimensions.get('screen').width - 120,
     borderRadius: 10,
+    position: 'relative',
+    alignItems: 'center',
   },
   rightArrow: {
     position: 'absolute',

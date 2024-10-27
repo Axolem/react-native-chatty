@@ -28,8 +28,9 @@ function _SwipeableBubble(props: ISwipeableBubble) {
     <Swipeable
       renderLeftActions={renderLeftActions}
       friction={2}
-      overshootFriction={2}
+      overshootFriction={8}
       onEnded={() => _onReply()}
+      renderRightActions={renderLeftActions}
       enableTrackpadTwoFingerGesture
       ref={swipeableRef}
     >

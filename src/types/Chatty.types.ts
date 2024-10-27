@@ -5,7 +5,6 @@ import type {
   TouchableOpacityProps,
   ViewStyle,
 } from 'react-native';
-import type { ContextMenuAction } from 'react-native-context-menu-view';
 import type { FlashListProps } from '@shopify/flash-list';
 
 export interface IUser {
@@ -26,6 +25,7 @@ export interface IMessage {
 }
 
 export interface IChatty {
+  inserts?: boolean;
   messages: IMessage[];
   headerProps?: IChatHeaderProps;
   footerProps: IFooterProps;
@@ -202,7 +202,7 @@ export interface ITypingStatusRef {
 }
 
 export interface IActionProps {
-  options: Pick<ContextMenuAction, 'title' | 'destructive' | 'systemIcon'>[];
+  options: [];
   cancelButtonLabel?: string;
 }
 
