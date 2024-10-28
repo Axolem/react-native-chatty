@@ -1,19 +1,15 @@
-import { FC } from 'react';
-import { HoldMenuProvider } from '@manse/react-native-hold-menu';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { FC, useContext } from 'react';
+import { HoldItem } from '@manse/react-native-hold-menu';
+import { PropsContext } from '../components/props-context';
 
 interface MenuActionProps {
   children: JSX.Element;
   theme?: 'light' | 'dark';
 }
 
-const MenuAction: FC<MenuActionProps> = ({ children, theme }) => {
-  const insets = useSafeAreaInsets();
-  return (
-    <HoldMenuProvider safeAreaInsets={insets} theme={theme}>
-      {children}
-    </HoldMenuProvider>
-  );
+const MenuAction: FC<MenuActionProps> = ({ children }) => {
+  const props = useContext(PropsContext);
+  return <HoldItem {...props.holdMenuProps.holdItemProps}>{children}</HoldItem>;
 };
 
 export { MenuAction as ContextMenuView };

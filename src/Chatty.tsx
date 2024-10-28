@@ -1,13 +1,7 @@
 import dayjs from 'dayjs';
 import type { ForwardedRef } from 'react';
 import { forwardRef, useCallback, useEffect, useRef } from 'react';
-import {
-  ActivityIndicator,
-  Dimensions,
-  Keyboard,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Keyboard, StyleSheet, View } from 'react-native';
 import { Footer } from './footer';
 
 import { List } from './list';
@@ -17,6 +11,7 @@ import {
   KeyboardAvoiderProvider,
   KeyboardAvoiderScrollView,
 } from '@good-react-native/keyboard-avoider';
+import { HoldMenuProvider } from '@manse/react-native-hold-menu';
 
 export const Chatty = forwardRef(
   (props: IChatty, ref: ForwardedRef<ListRef>) => {
@@ -67,25 +62,34 @@ export const Chatty = forwardRef(
             {props.messages.length < 1 ? (
               renderLoading()
             ) : (
-              <>
-                <List
-                  data={messages}
-                  //@ts-ignore
-                  ref={ref ?? listRef}
-                  rowRenderer={
-                    props?.renderBubble ? props.renderBubble : undefined
-                  }
-                  {...props.listProps}
-                />
-                {props?.renderFooter ? (
-                  props.renderFooter(props.footerProps)
-                ) : (
-                  <Footer
-                    {...props.footerProps}
-                    replyingTo={props.replyingTo}
+              <HoldMenuProvider
+                safeAreaInsets={props.holdMenuProps.safeAreaInsets}
+                theme={props.holdMenuProps.theme}
+                iconComponent={props?.holdMenuProps?.iconComponent}
+                onClose={props?.holdMenuProps?.onClose}
+                onOpen={props?.holdMenuProps?.onOpen}
+              >
+                <>
+                  <List
+                    data={messages}
+                    //@ts-ignore
+                    ref={ref ?? listRef}
+                    rowRenderer={
+                      props?.renderBubble ? props.renderBubble : undefined
+                    }
+                    {...props.listProps}
                   />
-                )}
-              </>
+
+                  {props?.renderFooter ? (
+                    props.renderFooter(props.footerProps)
+                  ) : (
+                    <Footer
+                      {...props.footerProps}
+                      replyingTo={props.replyingTo}
+                    />
+                  )}
+                </>
+              </HoldMenuProvider>
             )}
           </KeyboardAvoiderScrollView>
         </PropsContext.Provider>

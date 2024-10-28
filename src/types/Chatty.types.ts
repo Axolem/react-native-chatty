@@ -6,6 +6,7 @@ import type {
   ViewStyle,
 } from 'react-native';
 import type { FlashListProps } from '@shopify/flash-list';
+import { HoldItemProps } from '@manse/react-native-hold-menu/lib/typescript/components/holdItem';
 
 export interface IUser {
   id: number;
@@ -47,6 +48,7 @@ export interface IChatty {
   renderHeader?: (props?: IChatHeaderProps) => JSX.Element;
   renderBubble?: (props?: IMessage) => JSX.Element;
   renderTypingBubble?: (props?: ITypingBubble) => JSX.Element;
+  holdMenuProps: IHoldMenuProps;
 }
 
 export interface IListProps
@@ -70,7 +72,7 @@ export interface IChatBubble {
   trailingAccessory?: JSX.Element;
   showAvatars?: IShowAvatarProps;
   tickProps?: ITickProps;
-  actions?: IActionProps;
+  // actions?: IActionProps;
   enableCornerRounding?: boolean;
   children?: JSX.Element;
 }
@@ -233,4 +235,18 @@ export interface IUrlPreviewBubble {
   image: string;
   description: string;
   url: string;
+}
+
+export interface IHoldMenuProps {
+  theme: 'light' | 'dark';
+  onOpen?: () => void;
+  onClose?: () => void;
+  safeAreaInsets: {
+    top: number;
+    bottom: number;
+    right: number;
+    left: number;
+  };
+  holdItemProps: HoldItemProps;
+  iconComponent?: JSX.Element;
 }
