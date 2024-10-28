@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { ChatBubbleEmitter } from '../utils/event-emitter';
+// import { ChatBubbleEmitter } from '../utils/event-emitter';
 
 function _ReplyingTo(props: {
   username: string;
@@ -15,12 +15,12 @@ function _ReplyingTo(props: {
     return text.slice(0, 100) + '...';
   }, [text]);
 
-  const onPressChatBubble = useCallback(() => {
-    ChatBubbleEmitter.emit('replyBubblePressed', messageId);
-  }, [messageId]);
+  // const onPressChatBubble = useCallback(() => {
+  //   ChatBubbleEmitter.emit('replyBubblePressed', messageId);
+  // }, [messageId]);
 
   return (
-    <TouchableWithoutFeedback onPress={onPressChatBubble}>
+    <TouchableWithoutFeedback>
       <View style={styles.reply}>
         <View style={styles.replyBody}>
           <Text style={styles.replyUsername}>{username}</Text>

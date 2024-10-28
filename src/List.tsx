@@ -43,7 +43,7 @@ import {
   LayoutType,
   ListRef,
 } from './types/chatty.types';
-import { ChatBubbleEmitter } from './utils/event-emitter';
+// import { ChatBubbleEmitter } from './utils/event-emitter';
 import { wait } from './utils/helpers';
 
 const ScrollViewWithHeader = forwardRef(
@@ -92,20 +92,20 @@ export const List = forwardRef(
 
     /* This code is listening to the event of a reply bubble being pressed. When it is pressed, it scrolls
 to the replied message. */
-    useEffect(() => {
-      // When reply is pressed, scroll to replied message
-      ChatBubbleEmitter.addListener('replyBubblePressed', (messageId) => {
-        const index = messages.findIndex((m) => m.id === messageId);
+    // useEffect(() => {
+    //   // When reply is pressed, scroll to replied message
+    //   ChatBubbleEmitter.addListener('replyBubblePressed', (messageId) => {
+    //     const index = messages.findIndex((m) => m.id === messageId);
 
-        if (index !== -1) {
-          flashListRef.current?.scrollToIndex({ index, animated: true });
-        }
-      });
+    //     if (index !== -1) {
+    //       flashListRef.current?.scrollToIndex({ index, animated: true });
+    //     }
+    //   });
 
-      return () => {
-        ChatBubbleEmitter.removeAllListeners();
-      };
-    }, [messages]);
+    //   return () => {
+    //     ChatBubbleEmitter.removeAllListeners();
+    //   };
+    // }, [messages]);
 
     /* Using the useImperativeHandle hook to expose a function to the parent component that will allow
     it to manipulate the messages list. */
